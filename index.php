@@ -1,30 +1,36 @@
 <?php
-session_start();
-$servername ="e1z3r5p4:8080";
-$username = "username";
-$password = "password";
-$dbname = "camagru";
-mysql_connect("");
-echo 'Connected successfully';
+if (session_id() == "") {
+	session_start();
+}
+include('config.php');
+try {
+	$pdo = new PDO($DB_DEST, $DB_USER, $DB_PASS);
+}
+catch (Exception $e) {
+	die('Error: ' . $e->getMessage());
+	$_SESSION['ERROR'] = "Huh <a href='setup.php'>here</a>";
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Camagru</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-	<script>
-		
-	</script>
 </head>
 <body>
-<header>
+<header id="nav-container">
 	<h1 id="title">Camagru</h1>
 </header>
-<section class="container">
+<section id="container">
 	<div id="userInfo">
-		<input type="text" name="login" placeholder="login" id="login">
-		<input type="password" name="password" placeholder="password" id="password">
+		<form action="login.php" method="post">
+			<input type="text" name="login" placeholder="login" id="login">
+			<br>
+			<input type="password" name="passwd" placeholder="password" id="password">
+			<br>
+			<input type="button" name="signup" value="Sign Up" id="signup">
+		</form>
 	</div>
 </section>
 <footer>
