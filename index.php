@@ -3,6 +3,7 @@ if (session_id() == "") {
 	session_start();
 }
 include('config.php');
+include('');
 try {
 	$pdo = new PDO($DB_DEST, $DB_USER, $DB_PASS);
 }
