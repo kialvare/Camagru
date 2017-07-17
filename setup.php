@@ -1,15 +1,11 @@
 <?php
-include("config.php");
-?>
-<?php
-try {
-	$pdo = new PDO($DB_DEST, $DB_USER, $DB_PASS);
-}
-catch (Exception $e) {
-	$pdo_create_db = 0;
-	echo "Connection blurp<br />";
-	$pdo = new PDO($DB_DEBUG, $DB_USER, $DB_PASS);
-	$req = "CEREATE DATABASE IFNOT EXISTS `".$DB_NAME."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
-	$pdo->prepare($req)->execute();
-}
+	$DB_DEST = "mysql:dbname=camagru;host=localhost";
+	$DB_DEBUG = "mysql:host=localhost";
+	$DB_USER = "root";
+	$DB_PASS = "jugzkwtn";
+	$DB_NAME = "camagru";
+	$DB_TABLE_USR = "user";
+	$DB_TABLE_IMG = "photo";
+	$DB_TABLE_COM = "comment";
+	$DB_PATH = "http://localhost:8080/";
 ?>

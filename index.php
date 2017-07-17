@@ -1,16 +1,6 @@
 <?php
-if (session_id() == "") {
-	session_start();
-}
+session_start();
 include('config.php');
-include('');
-try {
-	$pdo = new PDO($DB_DEST, $DB_USER, $DB_PASS);
-}
-catch (Exception $e) {
-	die('Error: ' . $e->getMessage());
-	$_SESSION['ERROR'] = "Huh <a href='setup.php'>here</a>";
-}
 ?>
 <!DOCTYPE html>
 <html>
