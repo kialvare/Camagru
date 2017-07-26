@@ -1,12 +1,8 @@
 <?php
 session_start();
-$ret = "";
 if (isset($_SESSION['user_id'])) {
 header("Location: index.php");
 }
-if ($_GET['submit'] == 'Submit' && $_GET['passwd'] && $_GET['uname']) {
-require 'user_hash.php';
-require 'db_init.php';
 if (!$link)
 header("Location: index.php");
 $query = sprintf("SELECT * FROM Users WHERE `user_uname`='%s'",	mysql_real_escape_string($link, $_GET['uname']));
@@ -22,37 +18,10 @@ header("Location: index.php");
 } else { $ret = "Error\n"; }
 }
 ?>
-
+<!DOCTYPE html>
 <html>
 	<head>
 	</head>
 	<body>
-		<div class="background-image"></div>
-		<div class="content">
-			<h1 class="h1"></br>NEEDFUL THINGS</h1>
-			<img src="images/right.png">
-			</br>
-			<div class="errorbox">
-				<?php
-				echo $ret;
-				?>
-			</div>
-			<div class="menu_bar">
-				<div class="return_home">
-					<button class="dropbtn" title="make Mr. Needful cry :'(" onclick="location.href='index.php'">Return Home</button>
-				</div>
-				<form method="post" action="login.php">
-					<div class="center">
-						Username: <input type="text" name="uname" value="<?php echo $_GET['uname'];?>" />
-					</div>
-					<div class="center">
-						Password: <input name="passwd" type="password" value="" />
-					</div>
-					<div class="submit">
-						<input class="submit" type="submit" name="submit" value="Submit">
-					</div>
-				</form>
-				</div>
-			</div>
 	</body>
 </html>

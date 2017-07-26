@@ -13,7 +13,7 @@ try {
 }
 
 try {
-	$pdo->query("CREATE DATABASE IF NOT EXISTS camagry");
+	$pdo->query("CREATE DATABASE IF NOT EXISTS camagru");
 	print("DATABASE camagru created" . PHP_EOL);
 } catch (PDOException $e) {
 	print("Error: " . $e->getMessage() . PHP_EOL);
